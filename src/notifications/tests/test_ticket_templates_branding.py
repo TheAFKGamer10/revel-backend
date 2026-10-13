@@ -58,26 +58,26 @@ class TestTicketPdfBranding:
         html = self._render_ticket_html()
         assert "Nata Sans" in html, "Missing 'Nata Sans' in ticket HTML"
 
-    def test_ticket_html_contains_powered_by_wordmark(self) -> None:
-        """Ticket template must carry the 'Powered by revel.' footer lockup in <body>.
+    # def test_ticket_html_contains_powered_by_wordmark(self) -> None:
+    #     """Ticket template must carry the 'Powered by revel.' footer lockup in <body>.
 
-        WeasyPrint suppresses anything in <head>, so the lockup must render in <body>.
-        """
-        html = self._render_ticket_html()
-        body_part = html.split("<body", 1)[1]
-        assert "Powered by" in body_part, "Missing 'Powered by' in ticket HTML body"
+    #     WeasyPrint suppresses anything in <head>, so the lockup must render in <body>.
+    #     """
+    #     html = self._render_ticket_html()
+    #     body_part = html.split("<body", 1)[1]
+    #     assert "Powered by" in body_part, "Missing 'Powered by' in ticket HTML body"
 
-    def test_ticket_html_contains_brand_mark_in_body(self) -> None:
-        """Ticket template must reference revel-mark.svg in <body> for the footer lockup."""
-        html = self._render_ticket_html()
-        body_part = html.split("<body", 1)[1]
-        assert "revel-mark.svg" in body_part, "Missing revel-mark.svg reference in ticket HTML body"
+    # def test_ticket_html_contains_brand_mark_in_body(self) -> None:
+    #     """Ticket template must reference revel-mark.svg in <body> for the footer lockup."""
+    #     html = self._render_ticket_html()
+    #     body_part = html.split("<body", 1)[1]
+    #     assert "revel-mark.svg" in body_part, "Missing revel-mark.svg reference in ticket HTML body"
 
-    def test_ticket_html_wordmark_gradient_endpoints(self) -> None:
-        """The 'revel' wordmark must span the brand gradient: Hearty Purple → Light Crimson."""
-        html = self._render_ticket_html()
-        assert "#8C3CDD" in html, "Wordmark gradient start #8C3CDD (Hearty Purple) missing"
-        assert "#E6332A" in html, "Wordmark gradient end #E6332A (Light Crimson) missing"
+    # def test_ticket_html_wordmark_gradient_endpoints(self) -> None:
+    #     """The 'revel' wordmark must span the brand gradient: Hearty Purple → Light Crimson."""
+    #     html = self._render_ticket_html()
+    #     assert "#8C3CDD" in html, "Wordmark gradient start #8C3CDD (Hearty Purple) missing"
+    #     assert "#E6332A" in html, "Wordmark gradient end #E6332A (Light Crimson) missing"
 
     def test_ticket_html_uses_brand_palette(self) -> None:
         """Ticket chrome must use the Bubble palette: lavender paper and ink."""

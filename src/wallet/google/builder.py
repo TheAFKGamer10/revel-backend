@@ -33,9 +33,9 @@ def _localized(value: str) -> dict[str, t.Any]:
     return {"defaultValue": {"language": "en", "value": value}}
 
 
-def _powered_by_links() -> dict[str, t.Any]:
-    """Platform attribution link — mirrors the Apple rail's powered_by back field."""
-    return {"uris": [{"id": "powered_by", "uri": POWERED_BY_URL, "description": "Powered by Revel"}]}
+# def _powered_by_links() -> dict[str, t.Any]:
+#     """Platform attribution link — mirrors the Apple rail's powered_by back field."""
+#     return {"uris": [{"id": "powered_by", "uri": POWERED_BY_URL, "description": "Powered by Revel"}]}
 
 
 def _org_logo_url(org: Organization) -> str | None:
@@ -154,7 +154,7 @@ def build_ticket_payload(ticket: Ticket) -> dict[str, t.Any]:
         "textModulesData": [
             {"id": item.key, "header": item.label, "body": item.value} for item in ticket_fields(ticket)
         ],
-        "linksModuleData": _powered_by_links(),
+        # "linksModuleData": _powered_by_links(),
     }
     if ticket.guest_name:
         obj["ticketHolderName"] = ticket.guest_name
@@ -216,7 +216,7 @@ def build_series_pass_payload(held_pass: HeldSeriesPass) -> dict[str, t.Any]:
         "textModulesData": [
             {"id": "price", "header": "Price", "body": format_price(held_pass.price_paid, series_pass.currency)}
         ],
-        "linksModuleData": _powered_by_links(),
+        # "linksModuleData": _powered_by_links(),
     }
     return {"eventTicketClasses": [cls], "eventTicketObjects": [obj]}
 
@@ -263,7 +263,7 @@ def build_membership_payload(member: OrganizationMember) -> dict[str, t.Any]:
                 "body": "Your newest membership card supersedes any older ones.",
             },
         ],
-        "linksModuleData": _powered_by_links(),
+        # "linksModuleData": _powered_by_links(),
     }
     if member.tier:
         obj["subheader"] = _localized(member.tier.name)

@@ -276,7 +276,7 @@ class ApplePassGenerator:
                 "backFields": [
                     {"key": "member_id", "label": "Member ID", "value": data.serial_number},
                     {"key": "org", "label": "Organization", "value": data.organization_name},
-                    {"key": "powered_by", "label": POWERED_BY_LABEL, "value": POWERED_BY_VALUE},
+                    # {"key": "powered_by", "label": POWERED_BY_LABEL, "value": POWERED_BY_VALUE},
                 ],
             },
         }
@@ -573,7 +573,7 @@ class ApplePassGenerator:
             for item in data.compliance_fields
         )
 
-        fields.append({"key": "powered_by", "label": POWERED_BY_LABEL, "value": POWERED_BY_VALUE})
+        # fields.append({"key": "powered_by", "label": POWERED_BY_LABEL, "value": POWERED_BY_VALUE})
 
         return fields
 
